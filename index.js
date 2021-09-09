@@ -27,7 +27,7 @@ module.exports = class EmitAllPlugin {
                     // Excludes MultiModules as well as ContextModules
                     if (!mod._source) return;
 
-                    const source = mod._source._value;
+                    const source = mod._source._valueAsString;
                     const projectRoot = compiler.context;
                     const out = this.path || compiler.options.output.path;
 
