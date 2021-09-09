@@ -1,4 +1,5 @@
 const path = require('path');
+const mkdirp = require('mkdirp');
 
 module.exports = class EmitAllPlugin {
     constructor(opts = {}) {
@@ -34,18 +35,15 @@ module.exports = class EmitAllPlugin {
                         absolutePath.replace(projectRoot, '')
                     );
 
-                    compiler.outputFileSystem.mkdirp(
-                        path.dirname(dest),
+                    mkdirp.sync(path.dirname(dest), {
+                        fs: compiler.outputFileSystem
+                    });
+
+                    compiler.outputFileSystem.writeFile(
+                        dest,
+                        source,
                         err => {
                             if (err) throw err;
-
-                            compiler.outputFileSystem.writeFile(
-                                dest,
-                                source,
-                                err => {
-                                    if (err) throw err;
-                                }
-                            );
                         }
                     );
                 });

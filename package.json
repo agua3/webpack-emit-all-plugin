@@ -7,13 +7,15 @@
     "node": ">=7",
     "npm": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mkdirp": "^1.0.4"
+  },
   "devDependencies": {
     "prettier": "^1.5.3",
     "prettier-check": "^1.0.0"
   },
   "peerDependencies": {
-    "webpack": ">=4"
+    "webpack": ">=5"
   },
   "scripts": {
     "format": "prettier --single-quote --tab-width 4 --write *.js",
