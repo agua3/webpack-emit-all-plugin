@@ -42,7 +42,7 @@ module.exports = class EmitAllPlugin {
 
                     compiler.outputFileSystem.writeFile(
                         dest,
-                        source,
+                        source || '',
                         err => {
                             if (err) throw err;
                         }
